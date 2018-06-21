@@ -28,16 +28,15 @@ def play(songs)
   puts "Please enter a song name or number:"
   response = gets.chomp
   song_match = 0
-  # puts response.downcase
 
-  if response.to_i == 0
+  if response.to_i == 0 # A string returns value 0, user intended string input
     songs.each_with_index do |song, index|
       if response.downcase == song.downcase
         puts "Playing #{song}"
         song_match = 1
       end
     end
-  elsif response.to_i > 0
+  elsif response.to_i > 0 # If input > 0, then user intended numeric input
     unless songs[response.to_i].nil?
       puts "Playing #{songs[response.to_i - 1]}"
       song_match = 1
@@ -56,7 +55,7 @@ end
 def run(songs)
   help
   puts "Please enter a command:"
-  response = gets.strip
+  response = gets.strip # strip removes whitespace
 
   until response.downcase == "exit"
     case response.downcase
